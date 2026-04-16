@@ -1,0 +1,76 @@
+// === HARDWARE AUTHENTICATION FIREWALL ===
+// Natively stores the secret PIN inside the 0x0800 ROM
+// Scans realtime Keyboard IO and halts upon mismatch.
+
+.MAWAAD
+RAAZ: "786\0"
+SAHI: "\n[SYSTEM] ACCESS GRANTED! Welcome back.\n\0"
+GHALAT: "\n[SYSTEM] ACCESS DENIED! Core locked.\n\0"
+
+.HIDAYAT
+BHARO R5, RAAZ
+BHARO R6, 0x0FF0 // Keyboard Char MMIO
+BHARO R4, 0      // Null check / 0 check register
+
+AGLA_HARF:
+// Get character from Keyboard
+PARHO R1, [R6]
+
+// If key == 0 (no key), loop back and wait
+MUWAZANA R1, R4
+BHARO R0, AGLA_HARF
+AGAR_SIFAR R0
+
+// Read expected character from RAAZ Memory Block
+PARHO R2, [R5]
+
+// Compare key with expected character
+MUWAZANA R1, R2
+// If it doesn't match, INCORRECT! Jump to FAIL!
+BHARO R0, NAKAAM  
+AGAR_MAUJOOD R0
+
+// IT MATCHED! Increment RAM offset pointer
+BHARO R0, 1
+JAMA R5, R0
+
+// Did we hit the \0 in our password array yet?
+PARHO R2, [R5]
+MUWAZANA R2, R4
+// If we hit \0, it means entire password succeeded!
+BHARO R0, KAMYAAB 
+AGAR_SIFAR R0
+
+// Otherwise, jump back and check the next character
+BHARO R0, AGLA_HARF
+CHHALANG R0
+
+// ==========================================
+// SUCCESS AND FAILURE PRINTER BLOCKS
+// ==========================================
+
+NAKAAM:
+BHARO R5, GHALAT
+BHARO R0, CHHAPO
+CHHALANG R0
+
+KAMYAAB:
+BHARO R5, SAHI
+
+CHHAPO:
+BHARO R6, 0x0FF1 // Monitor Character MMIO
+BHARO R0, 1      // Pointer Incrementer
+
+LOOP:
+PARHO R1, [R5]
+MUWAZANA R1, R4
+BHARO R2, KHATAM
+AGAR_SIFAR R2 // Exit if string hit \0
+
+RAKHO R1, [R6] // Write to Phosphor Display
+JAMA R5, R0    // Increment pointer
+BHARO R2, LOOP
+CHHALANG R2
+
+KHATAM:
+AARAM

@@ -1,0 +1,76 @@
+// === TURING COMPLETE 4-OP CALCULATOR (URDU DIALECT) ===
+BHARO R5, 0x0FF3   // R5 = Keyboard Int MMIO
+BHARO R6, 0x0FF0   // R6 = Keyboard Char MMIO
+BHARO R7, 0x0FF2   // R7 = Monitor Int MMIO
+
+// We need a free register for Monitor Char MMIO (0x0FF1)
+// R0=temp, R1=num1, R2=num2, R3=operator, R4=MonitorChar, R5=KeyInt, R6=KeyChar, R7=MonInt
+BHARO R4, 0x0FF1   // R4 = Monitor Char MMIO
+
+// 1. Read Num1
+PARHO R1, [R5]     // Hardware parsing!
+
+// 2. Read Operator
+PARHO R3, [R6]         
+
+// 3. Read Num2
+PARHO R2, [R5]         
+
+// 4. Output the equation UI: 'NUM1 OP NUM2 = '
+RAKHO R1, [R7]         // Print Num1
+BHARO R0, 32           // Space
+RAKHO R0, [R4]
+RAKHO R3, [R4]         // Print Op
+RAKHO R0, [R4]
+RAKHO R2, [R7]         // Print Num2
+RAKHO R0, [R4]
+BHARO R0, 61           // '='
+RAKHO R0, [R4]
+BHARO R0, 32           // Space
+RAKHO R0, [R4]
+
+// 5. Evaluate Operator
+BHARO R0, 43
+MUWAZANA R3, R0
+BHARO R0, DO_JAMA
+AGAR_SIFAR R0
+
+BHARO R0, 45
+MUWAZANA R3, R0
+BHARO R0, DO_TAFREEK
+AGAR_SIFAR R0
+
+BHARO R0, 42
+MUWAZANA R3, R0
+BHARO R0, DO_ZARAB
+AGAR_SIFAR R0
+
+BHARO R0, 47
+MUWAZANA R3, R0
+BHARO R0, DO_TAQSEEM
+AGAR_SIFAR R0
+
+BHARO R0, KHATAM
+CHHALANG R0
+
+DO_JAMA:
+JAMA R1, R2
+BHARO R0, KHATAM
+CHHALANG R0
+
+DO_TAFREEK:
+TAFREEK R1, R2
+BHARO R0, KHATAM
+CHHALANG R0
+
+DO_ZARAB:
+ZARAB R1, R2
+BHARO R0, KHATAM
+CHHALANG R0
+
+DO_TAQSEEM:
+TAQSEEM R1, R2
+
+KHATAM:
+RAKHO R1, [R7]         // Print final Int result
+AARAM

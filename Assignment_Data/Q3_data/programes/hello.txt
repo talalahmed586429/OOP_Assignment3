@@ -1,0 +1,31 @@
+.MAWAAD
+MSG: "HELLO WORLD!\nThis is natively printing from the 0x0800 RAM DATA segment!\0"
+
+.HIDAYAT
+// R6 = Monitor Character MMIO address
+BHARO R6, 0x0FF1 
+// R5 = Pointer to string in RAM (Label MSG dynamically maps to 0x0800)
+BHARO R5, MSG    
+// R7 = Null terminator (0)
+BHARO R7, 0      
+// R0 = 1 (for incrementing the pointer)
+BHARO R0, 1
+
+LOOP:
+// Load byte (character) from Motherboard memory at address R5 into R1
+PARHO R1, [R5]   
+// Compare the loaded character with Null terminator (R7)
+MUWAZANA R1, R7  
+// If we hit \0 (Equal), Jump to END
+BHARO R2, END
+AGAR_SIFAR R2   
+// Print the character to Monitor
+RAKHO R1, [R6]   
+// Increment the string pointer (R5 = R5 + 1)
+JAMA R5, R0      
+// Jump back to the top of the loop
+BHARO R2, LOOP
+CHHALANG R2      
+
+END:
+AARAM
