@@ -1,0 +1,92 @@
+[KINGDOMS],,,,,,,,,
+RealmID,RealmName,StartingWealth,BaseTaxIncome,BaseDefenseStat,TerrainType,,,,
+0,The Sunland Empire,100000,10000,500,Coastal,,,,
+1,The Peaks of Frost,100000,10000,500,Frozen,,,,
+2,The Sky Citadel,100000,10000,500,Plains,,,,
+3,The Corsair Isles,100000,10000,100,Coastal,,,,
+4,The Verdant Expanse,100000,10000,500,Plains,,,,
+5,The Crimson Sands,100000,10000,500,Plains,,,,
+6,The Tempest Coast,100000,10000,500,Coastal,,,,
+7,The Azure Riverlands,100000,10000,100,Plains,,,,
+8,The Imperial Seat,100000,10000,500,Coastal,,,,
+9,The Void Rift,0,0,0,Frozen,,,,
+,,,,,,,,,
+[RELATIONS],,,,,,,,,
+# Golden Path Calibration: All houses start as allies. Modified to ignite precise events.,,,,,,,,,
+  0  50  50  50  50  50  50 -20  50 -90,,,,,,,,,
+ 50   0  50  50  50 -45  50  50  50 -90,,,,,,,,,
+ 50  50   0  50  50  50  50  50  50 -90,,,,,,,,,
+ 50  50  50   0 -55  50  50  50  50 -90,,,,,,,,,
+ 50  50  50 -55   0  50  50  50  50 -90,,,,,,,,,
+ 50 -45  50  50  50   0  50  50  50 -90,,,,,,,,,
+ 50  50  50  50  50  50   0  50 -30 -90,,,,,,,,,
+-20  50  50  50  50  50  50   0  50 -90,,,,,,,,,
+ 50  50  50  50  50  50 -30  50   0 -90,,,,,,,,,
+-90 -90 -90 -90 -90 -90 -90 -90 -90  0,,,,,,,,,
+,,,,,,,,,
+[LORDS],,,,,,,,,
+# High Strategy / Elevated key ambitions to string together events,,,,,,,,,
+LordID,Name,Age,Gender,Class,RealmIdx,StrategyStat,AmbitionStat,DiplomacyStat,FatherID
+0,Emperor Alaric Valerion,35,M,LandedLord,0,100,10,90,-1
+1,General Braith (The Architect),28,M,LandlessLord,0,95,90,80,-1
+2,Legate Voran (The Oathbreaker),24,M,LandlessLord,0,90,10,15,-1
+3,Warden Kaelen Vane,63,M,LandedLord,1,100,5,50,-1
+4,Lady Elarra Vane,19,F,LandlessLord,1,80,10,70,3
+5,Highguard Harek Vane,22,M,LandlessLord,1,85,10,45,3
+6,Archon Silas Solari,55,M,LandedLord,2,100,5,80,-1
+7,Chancellor Zephyr,28,M,LandlessLord,2,100,100,95,-1
+8,Admiral Caelum Voss,42,M,LandedLord,3,100,10,80,-1
+9,Prince Xavion,16,M,LandlessLord,3,80,95,20,8
+10,Lord Julian Gale,50,M,LandedLord,4,100,10,75,-1
+11,Sun-Knight Amador,18,M,LandlessLord,4,90,10,60,-1
+12,Sovereign Rhydian Nyx,55,M,LandedLord,5,100,10,85,-1
+13,Prince Seraphin (The Viper),30,M,LandlessLord,5,95,10,40,-1
+14,Lord Gwydion Draken,25,M,LandedLord,6,100,10,60,-1
+15,Lord Baris (The Iron),32,M,LandlessLord,6,100,10,15,-1
+16,Valerion (The Drifter),28,M,WarriorLord,6,100,10,10,-1
+17,Patriarch Balthazar,62,M,LandedLord,7,100,10,85,-1
+18,Knight Corin,26,M,LandlessLord,7,85,10,50,17
+19,Malakor (The Fallen),56,M,LandedLord,8,100,10,10,-1
+20,Overseer Noctis,40,M,LandlessLord,8,95,10,95,-1
+21,Prince Valerian (The Exile),22,M,LandlessLord,8,80,10,15,19
+22,Commander Voran (Shield-Master),24,M,WarriorLord,0,100,10,20,-1
+23,Champion Seraphin (Blade-Master),30,M,WarriorLord,5,100,10,40,-1
+24,Sentinel Vortigern,50,M,WarriorLord,8,100,10,70,-1
+,,,,,,,,,
+[MILITARY],,,,,,,,,
+# Each realm contributes 4000+ power. Total > 36,000. Victory is absolute.,,,,,,,,
+RealmIdx,UnitType,Count,BaseAttack,BaseHP,BaseSiegeDmg,AoETargets,,,
+0,Knight,500,25,100,0,,,,
+1,Knight,500,25,100,0,,,,
+2,Knight,500,25,100,0,,,,
+3,Knight,500,25,100,0,,,,
+4,Knight,500,25,100,0,,,,
+5,Knight,500,25,100,0,,,,
+6,Knight,500,25,100,0,,,,
+7,Knight,500,25,100,0,,,,
+8,Knight,500,25,100,0,,,,
+,,,,,,,,,
+[SAGES],,,,,,,,,
+RealmIdx,Name,HealingPower,Wisdom,,,,,,
+0,Sage Althos,50,90,,,,,,
+1,Sage Myra,50,90,,,,,,
+2,Sage Kyp,50,90,,,,,,
+3,Sage Xalvador,50,90,,,,,,
+4,Sage Theron,50,90,,,,,,
+5,Sage Orin,50,90,,,,,,
+6,Sage Balthus,50,90,,,,,,
+7,Sage Zephyrus,50,90,,,,,,
+8,Sage Kael,50,90,,,,,,
+,,,,,,,,,
+[ASSASSINS],,,,,,,,,
+AssassinID,Name,Age,StealthStat,ClientRealmIdx,,,,,
+0,The Eclipse Blade,30,1,0,,,,,
+1,The Silent Fang,25,150,3,,,,,
+2,The Void Gaze,35,1,8,,,,,
+3,The Shadow-Walker,28,1,5,,,,,
+4,The Mourning Hand,32,1,7,,,,,
+,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+[CONFIG],,,,,,,,,
+ThreatMax=60,,,,,,,,,
